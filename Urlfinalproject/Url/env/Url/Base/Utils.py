@@ -343,8 +343,8 @@ def NaiveBayes_testing():
     f_y0, f_y1 = load_NaivePickleModel()
     print(f_y0, f_y1)
     x_test, y_test = load_testingData_from_pickle()
-    x_test = x_test[:100]
-    y_test = y_test[:100]
+    x_test = x_test
+    y_test = y_test
     y_test = [0 if label == "good" else 1 for label in y_test]
 
     def calc_log_likelihood(f_y0, f_y1, x):

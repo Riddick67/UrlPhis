@@ -22,7 +22,7 @@
         body {
             height: 100vh;
             width: 100%;
-            background-image: url("{% static 'hero-bg.jpg' %}");
+            background-image: url("{% static 'hero.png' %}");
             background-position: center;
             background-size: cover;
         }
@@ -137,7 +137,86 @@
         main {
             margin-left: 120px;
         }
+        .form-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            padding: 40px;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            box-sizing: border-box;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+        }
 
+        .form-box h1 {
+            margin: 0 0 30px;
+            padding: 0;
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .form-box p {
+            margin: 0 0 30px;
+            padding: 0;
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .btn {
+            overflow: hidden;
+            width: 100%;
+            height: 45px;
+            background: #03e9f4;
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #ffffff;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-top: 10px; /* Adjust top margin as needed */
+    margin-bottom: 10px; /* Adjust bottom margin as needed */
+    margin-left: 0; /* Adjust left margin as needed */
+    margin-right: 0; /* Adjust right margin as needed */
+    position: relative;
+    display: inline-block;
+        }
+
+.btn input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px; /* Adjust font size to your preference */
+    cursor: pointer;
+    opacity: 0;
+}
+
+.file-label {
+    display: inline-block;
+    padding: 10px 20px; /* Adjust padding to your preference */
+    background-color: #03e9f4; /* Adjust background color */
+    color: #ffffff; /* Adjust text color */
+    border: none;
+    border-radius: 6px;
+    font-size: 16px; /* Adjust font size to your preference */
+    cursor: pointer;
+    padding-left: 90px;
+}
+
+        .btn:hover{
+            background: #03e9f4;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4 ;
+        }
+        
     </style>
 </head>
 
@@ -174,44 +253,41 @@
             </li>
         </ul>
     </aside>
+
     <main>
+        <div class="form-box login">
         <h1>Training the Data</h1><br>
         <p>Click on the "Choose File" button to upload a file:</p>
-        <h1>Upload Pickle File</h1>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="file" name="file" id="myFile" accept=".pkl" required>
-            <button type="submit">Upload</button>
+            <div class="btn">
+                <input type="file" name="file" id="myFile" accept=".pkl" required onchange="updateFileName(this)">
+                <label for="myFile" class="file-label" id="fileLabel">Choose file</label>
+            </div>
+            <button type="submit" class="btn" >Upload</button>
+            
         </form>
-    <button id="display" onclick="window.location.href='Modeltrain/'" >Train the data</button>
+  <button id="display" onclick="window.location.href='Modeltrain/'" class="btn" required>Train the data</button>
+</div>
 <div>
-    <!-- <table border="1">
-        <thead>
-            <tr>
-                {% for column in dataframe.columns %}
-                <th>{{ column }}</th>
-                {% endfor %}
-            </tr>
-        </thead>
-        <tbody>
-            {% for index, row in dataframe.iterrows %}
-            <tr>
-                {% for value in row %}
-                <td>{{ value }}</td>
-                {% endfor %}
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div> -->
-
 </main>
+
 <script>
     let display=document.getElementById("display");
     console.log(display)
     // function render(){
         
     // }
+    function updateFileName(input) {
+    const fileLabel = document.getElementById('fileLabel');
+    if (input.files.length > 0) {
+        fileLabel.textContent = input.files[0].name;
+    } else {
+        fileLabel.textContent = 'Choose a .pkl file';
+    }
+    
+}
+
 </script>
 </body>
 

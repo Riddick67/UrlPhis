@@ -21,7 +21,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: url("{% static 'cc6.png' %}");
+    background-image: url("{% static 'cc5.png' %}");
     background-size: cover;
 }
 
@@ -31,7 +31,7 @@ header {
     left: 0;
     width: 100%;
     padding: 20px 100px;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.9);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -39,9 +39,9 @@ header {
 }
 
 .logo {
-    font-size: 1.2em;
+    font-size: 1.4em;
     text-transform: uppercase;
-    color: aquamarine;
+    color: rgb(255, 255, 255);
     user-select: none;
     opacity: 1;
 }
@@ -49,7 +49,7 @@ header {
 .navigation a {
     position: relative;
     font-size: 1.1em;
-    color: rgba(255, 166, 0, 1);
+    color: rgb(255, 255, 255);
     text-decoration: none;
     font-weight: 500;
     margin-left: 40px;
@@ -62,7 +62,7 @@ header {
     bottom: -6px;
     width: 100%;
     height: 3px;
-    background: white;
+    background: rgb(255, 255, 255);
     border-radius: 5px;
     transform-origin: right;
     transform: scaleX(0);
@@ -77,12 +77,12 @@ header {
 .navigation .btnLogin-popup {
     width: 130px;
     height: 50px;
-    border: 2px solid white;
+    border: 2px solid rgb(255, 255, 255);
     outline: none;
     border-radius: 6px;
     cursor: pointer;
     font-size: 1.1em;
-    color: white;
+    color: rgb(255, 255, 255);
     background: transparent;
     font-weight: 500;
     margin-left: 40px;
@@ -90,7 +90,7 @@ header {
 }
 
 .navigation .btnLogin-popup:hover {
-    background: white;
+    background: rgb(255, 255, 255);
     color: #162938;
 }
 
@@ -274,35 +274,93 @@ header {
 .login-register p a:hover {
     text-decoration: underline;
 }
+
+.form-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            padding: 40px;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            box-sizing: border-box;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+        }
+        
+        .form-box h2 {
+            font-size: 1.3em;
+            margin: 0 0 15px;
+            padding: 0;
+            color: white;
+            text-align:left;
+        }
+
+        input[type=url] {
+        width: 100%; /* Adjust the width as needed */
+        padding: 10px; /* Add padding to provide space inside the input field */
+        border: 2px solid #252525; /* Add a border */
+        border-radius: 5px; /* Add rounded corners */
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        font-size: 16px; /* Set the font size */
+    }
+
+        .btn {
+            width: 100%;
+            height: 45px;
+            background: #03e9f4;
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #ffffff;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+        .btn:hover{
+            background: #03e9f4;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4 ;
+        }
+        
+        .messages {
+    list-style-type: none;
+    padding: 0;
+}
+
+.messages li {
+    color: white; /* Set the text color to white */
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
     </style>
     <title>Main</title>
 </head>
 
 <body>
     <header>
-        <h2 class="logo">Credit Card Fraud Detection System</h2>
+        <h2 class="logo">URL PHISHING MALWARE DETECTION SYSTEM</h2>
         <nav class="navigation">
             <a href="#">Home</a>
             <a href="{% url 'about' %}">About</a>
             <a href="{% url 'ourteam' %}">Our Team</a>
-            {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
+            
             <button onclick="redirectToAnotherPage()" class="btnLogin-popup">Login</button></a>
         </nav>
           
     </header>
-    <div>
+    <div class="form-box login">
+        <h2>Enter your URL</h2>
         <form method="post">
             {% csrf_token %}
             <input type="url" id="homepage" name="homepage" required><br><br>
-            <input type="submit">
+            <input type="submit" class="btn" value="CHECK">
         </form>
-    </div>
+   
     {% if messages %}
     <ul class="messages">
         {% for message in messages %}
@@ -311,7 +369,7 @@ header {
     </ul>
     {% endif %}
 
-
+</div>
     <script>
          const btnPopup = document.querySelector('.btnLogin-popup');
 
@@ -323,5 +381,4 @@ function redirectToAnotherPage() {
 }
     </script>
 </body>
-
 </html>

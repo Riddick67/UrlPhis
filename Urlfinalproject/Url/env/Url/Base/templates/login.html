@@ -20,9 +20,21 @@
             margin: 0;
             padding: 0;
             font-family: "Poppins", sans-serif;
-            background: linear-gradient(#141e30, #243b55);
+            background-image: url("{% static 'cc7.mp4' %}");
         }
         
+        #video-background {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  background-size: cover;
+}
+
         .form-box {
             position: absolute;
             top: 50%;
@@ -30,9 +42,9 @@
             width: 400px;
             padding: 40px;
             transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.85);
             box-sizing: border-box;
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.8);
             border-radius: 10px;
         }
         
@@ -84,20 +96,20 @@
         .form-box .input-box input :valid~label {
             top: -5px;
             left: 0;
-            color: #03e9f4;
+            color: rgb(255, 255, 255);
             font-size: 12px;
         }
         
         .btn {
             width: 100%;
             height: 45px;
-            background: #162938;
+            background: #03e9f4;
             border: none;
             outline: none;
             border-radius: 6px;
             cursor: pointer;
             font-size: 16px;
-            color: #03e9f4;
+            color: rgb(255, 255, 255);
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 4px;
@@ -110,7 +122,7 @@
         }
         .remember-forgot {
             font-size: 0.9em;
-            color: #03e9f4;
+            color: rgb(243, 237, 189);
             font-weight: 500;
             margin: -15px 0 15px;
             display: flex;
@@ -152,6 +164,11 @@
     <title>Login</title>
 </head>
 
+    <video autoplay muted loop id="video-background">
+    <source src="{% static 'cc7.mp4' %}" type="video/mp4">
+    Your browser does not support HTML5 video.
+    </video>
+  
     <div class="form-box login">
         <h2>Login</h2>
         <form method="post">
