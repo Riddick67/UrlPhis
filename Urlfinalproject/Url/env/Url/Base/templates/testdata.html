@@ -207,13 +207,11 @@ body {
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 4px;
-            margin-top: 10px; /* Adjust top margin as needed */
-    margin-bottom: 20px; /* Adjust bottom margin as needed */
-    margin-left: 0; /* Adjust left margin as needed */
-    margin-right: 0; /* Adjust right margin as needed */
-    position: relative;
-    display: inline-block;
-    text-decoration: none; /* Remove underline */
+            text-align: center;
+            position: relative;
+            display: grid;
+            text-decoration: none; /* Remove underline */
+            place-items: center;
         }
 
 .btn input[type=file] {
@@ -296,8 +294,8 @@ body {
             <label for="myFile" class="file-label" id="fileLabel">Choose file</label>
         </div>
         <button type="submit" class="btn">Upload</button>
-    </form>
-    <a href="{% url 'Testing' %}"> Testing</a> <br>
+    </form><br>
+    <a href="{% url 'Testing' %}" class="btn1"> Testing</a> 
 
 
     

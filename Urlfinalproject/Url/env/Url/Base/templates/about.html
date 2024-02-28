@@ -87,6 +87,15 @@ body{
     margin-bottom: 45px;
 }
 
+.button-container {
+    white-space: nowrap; /* Prevents line breaks */
+}
+
+.button-container a {
+    display: inline-block; /* Make buttons appear side by side */
+    margin-right: 10px; /* Adjust spacing between buttons */
+}
+
 button{
   overflow: hidden;
   width: 200px;
@@ -129,7 +138,10 @@ button:hover{
           <h1>ABOUT PROJECT</h1>
           <h5>URL PHISHING MALWARE DETECTION SYSTEM</h5>
           <p>The Credit Card Fraud Detection System utilizes predictive models to automatically identify fraudulent patterns and assign risk scores, employing the Random Forest Classifier algorithm to discern the authenticity of transactions. This approach contributes to the accurate differentiation between legitimate and suspicious transactions. The system is designed to enhance efficiency and precision in fraud detection, relying on advanced algorithms for real-time analysis.</p>
-          <a href="{% url 'login' %}"><button type="button">GET STARTED</button></a>
+          <div class="button-container">
+            <a href="{% url 'login' %}"><button type="button">GET STARTED</button></a>
+            <a href="{% url 'home' %}"><button type="button">HOME</button></a>
+        </div>
         </div>
       </div>
     </section>
